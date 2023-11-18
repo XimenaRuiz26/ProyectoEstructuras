@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 
@@ -27,7 +28,18 @@ public class PersonalController {
 	@FXML
 	private Label registrateAqui;
 	
+	@FXML
+    private ImageView flechaRegresarEvent;
+	
 	ModelFactoryController modelFactoryController;
+	
+	 @FXML
+	    void flechaRegresarEvent(MouseEvent event) {
+		 flechaRegresarEvent.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent ->{
+	    		aplicacion.mostrarVentanaIniciar();
+	    	});
+	    }
+
 
 	@FXML
 	void entrarEvent(ActionEvent event) {

@@ -10,6 +10,9 @@ public class InicioController {
     private Button btnAdmin;
     
 	private Aplicacion aplicacion;
+	
+	@FXML
+    private Button btnPersonal;
 
 
 	public void setAplicacion(Aplicacion aplicacion) {
@@ -22,4 +25,10 @@ public class InicioController {
 		aplicacion.mostrarVentanaLoginA();
 	}
 
+	
+	@FXML
+    void personalEvent(ActionEvent event) {
+		aplicacion.mostrarVentanaLoginP();
+                       
+    }
 }

@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class AdminController {
 	
@@ -22,11 +24,22 @@ public class AdminController {
     @FXML
     private Button btnEntrar;
     
+    @FXML
+    private ImageView flechaRegresarEvent;
+	
+    
     ModelFactoryController modelFactoryController;
 
     @FXML
     void entrarEvent(ActionEvent event) {
     	ingresarAction();
+    }
+    
+    @FXML
+    void flechaRegresarEvent(MouseEvent event) {
+	 flechaRegresarEvent.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent ->{
+    		aplicacion.mostrarVentanaIniciar();
+    	});
     }
 
 

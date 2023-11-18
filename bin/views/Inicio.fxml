@@ -19,12 +19,22 @@
             <Image url="@../imagenes/titulo.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnAdmin" layoutX="615.0" layoutY="417.0" mnemonicParsing="false" onAction="#entrarAdminEvent" prefHeight="41.0" prefWidth="105.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="ENTRAR" textFill="WHITE">
+      <Button fx:id="btnAdmin" layoutX="615.0" layoutY="417.0" mnemonicParsing="false" onAction="#entrarAdminEvent" prefHeight="41.0" prefWidth="105.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="ADMIN" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="23.0" />
          </font>
       </Button>
       <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="697.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/grifo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnPersonal" layoutX="14.0" layoutY="425.0" mnemonicParsing="false" onAction="#personalEvent" prefHeight="41.0" prefWidth="127.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="PERSONAL" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="23.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="104.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/grifo.png" />
          </image>
