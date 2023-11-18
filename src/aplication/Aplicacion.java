@@ -69,7 +69,7 @@ public class Aplicacion extends Application{
 		}
 	}
 	
-	public void mostrarVentanaPrincipal() {
+	public void mostrarVentanaPrincipal(String usuarioAdmin) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Aplicacion.class.getResource("../views/Principal.fxml"));
@@ -77,7 +77,7 @@ public class Aplicacion extends Application{
 			AnchorPane rootLayout = (AnchorPane)loader.load();
 
 			PrincipalController principalController= loader.getController();
-			principalController.setAplicacion(this);
+			principalController.setAplicacion(this, usuarioAdmin);
 
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);

@@ -52,6 +52,13 @@ public class Restaurante {
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
 	}
+
+	public boolean verificarAdmin(String usuarioAdmin, String contraseniaAdmin) {
+		if(admin.getUsuario().equals(usuarioAdmin)&& admin.getContrasenia().equals(contraseniaAdmin)){
+			return true;
+		}
+		return false;
+	}
 	
 	
 	

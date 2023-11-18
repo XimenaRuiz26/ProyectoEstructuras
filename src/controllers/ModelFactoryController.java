@@ -94,4 +94,8 @@ public class ModelFactoryController {
 		this.restaurante= restaurante;
 	}
 
+	public boolean verificarAdmin(String usuarioAdmin, String contraseniaAdmin) {
+		return restaurante.verificarAdmin(usuarioAdmin, contraseniaAdmin);
+	}
+
 }
