@@ -5,30 +5,41 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 
-public class AdminController {
+public class PersonalController {
 	
 	private Aplicacion aplicacion;
 	
 	@FXML
-    private TextField txtUsuario;
+	private TextField txtUsuario;
 
-    @FXML
-    private PasswordField txtContrasenia;
+	@FXML
+	private PasswordField txtContrasenia;
 
-    @FXML
-    private Button btnEntrar;
-    
-    ModelFactoryController modelFactoryController;
+	@FXML
+	private Button btnEntrar;
 
-    @FXML
-    void entrarEvent(ActionEvent event) {
-    	ingresarAction();
-    }
+	@FXML
+	private Label registrateAqui;
+	
+	ModelFactoryController modelFactoryController;
 
+	@FXML
+	void entrarEvent(ActionEvent event) {
+		ingresarAction();
+	}
+
+	@FXML
+	void registrateEvent(MouseEvent event) {
+		registrateAqui.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent ->{
+    		aplicacion.mostrarVentanaNuevoPersonal();
+    	});
+	}
 
 	public void setAplicacion(Aplicacion aplicacion) {
 		this.aplicacion = aplicacion;
@@ -37,16 +48,17 @@ public class AdminController {
 	
 	private void ingresarAction() {
 
-    	String usuarioAdmin = "";
-    	String contraseniaAdmin = "";
+    	String usuario = "";
+    	String contrasenia = "";
 
-    	usuarioAdmin = txtUsuario.getText();
-    	contraseniaAdmin = txtContrasenia.getText();
+    	usuario = txtUsuario.getText();
+    	contrasenia = txtContrasenia.getText();
 
-    	if(datosValidos(usuarioAdmin,contraseniaAdmin)){
-    		boolean documentoValido = modelFactoryController.verificarAdmin(usuarioAdmin,contraseniaAdmin);
+    	if(datosValidos(usuario,contrasenia)){
+
+    		boolean documentoValido = modelFactoryController.verificarPersonal(usuario,contrasenia);
     		if(documentoValido){
-    			aplicacion.mostrarVentanaPrincipal(usuarioAdmin);
+    			aplicacion.mostrarVentanaPrincipalPersonal(usuario);
     		}else{
     			mostrarMensaje("Notificacion Inicio sesion", "Usuario no existe", "Los datos ingresados no corresponde a un usuario valido", AlertType.INFORMATION);
 

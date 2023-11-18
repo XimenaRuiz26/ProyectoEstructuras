@@ -1,5 +1,9 @@
 package controllers;
+import java.util.HashSet;
+import java.util.Set;
+
 import model.Admin;
+import model.Personal;
 import model.Restaurante;
 public class ModelFactoryController {
 	Restaurante restaurante;
@@ -76,11 +80,25 @@ public class ModelFactoryController {
     	
     	restaurante= new Restaurante("Sr. Don Platano", "Calarcá");
     	
+    	Set <Personal> listaPersonal= new HashSet<Personal>();
+    	
     	Admin admin= new Admin();
     	admin.setNombre("Pepe");
     	admin.setId("105465465");
     	admin.setUsuario("pepito12");
     	admin.setContrasenia("12345");
+    	
+    	Personal personal = new Personal();
+    	personal.setNombre("Edd");
+    	personal.setApellido("Gutierrez");
+    	personal.setId("5345465454");
+    	personal.setDireccion("cra 30");
+    	personal.setEmail("eddg@gmail.com");
+    	personal.setUsuario("eddg");
+    	personal.setContrasenia("0000");
+    	
+    	listaPersonal.add(personal);
+    	restaurante.setAdmin(admin);
 
     }
 	
@@ -94,6 +112,10 @@ public class ModelFactoryController {
 
 	public boolean verificarAdmin(String usuarioAdmin, String contraseniaAdmin) {
 		return restaurante.verificarAdmin(usuarioAdmin, contraseniaAdmin);
+	}
+
+	public boolean verificarPersonal(String usuario, String contrasenia) {
+		return restaurante.verificarPersonal(usuario, contrasenia);
 	}
 
 }

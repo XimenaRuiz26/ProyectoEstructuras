@@ -4,7 +4,10 @@ import java.io.IOException;
 
 import controllers.AdminController;
 import controllers.InicioController;
+import controllers.NuevoPersonalController;
+import controllers.PersonalController;
 import controllers.PrincipalController;
+import controllers.PrincipalPersonalController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,7 +22,7 @@ public class Aplicacion extends Application{
 	public void start(Stage primaryStage) {
 
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Alcanzando la nota");
+		this.primaryStage.setTitle("Sr.Don Platano");
 
 		mostrarVentanaIniciar();
 
@@ -69,6 +72,27 @@ public class Aplicacion extends Application{
 		}
 	}
 	
+	public void mostrarVentanaLoginP() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Aplicacion.class.getResource("../views/LoginPersonal.fxml"));
+
+			AnchorPane rootLayout = (AnchorPane)loader.load();
+
+			PersonalController personalController= loader.getController();
+			personalController.setAplicacion(this);
+
+			Scene scene = new Scene(rootLayout);
+			primaryStage.setScene(scene);
+			//primaryStage.setResizable(false);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public void mostrarVentanaPrincipal(String usuarioAdmin) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -78,6 +102,48 @@ public class Aplicacion extends Application{
 
 			PrincipalController principalController= loader.getController();
 			principalController.setAplicacion(this, usuarioAdmin);
+
+			Scene scene = new Scene(rootLayout);
+			primaryStage.setScene(scene);
+			//primaryStage.setResizable(false);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void mostrarVentanaPrincipalPersonal(String usuarioP) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Aplicacion.class.getResource("../views/PrincipalPersonal.fxml"));
+
+			AnchorPane rootLayout = (AnchorPane)loader.load();
+
+			PrincipalPersonalController principalPersonalController= loader.getController();
+			principalPersonalController.setAplicacion(this, usuarioP);
+
+			Scene scene = new Scene(rootLayout);
+			primaryStage.setScene(scene);
+			//primaryStage.setResizable(false);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void mostrarVentanaNuevoPersonal() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Aplicacion.class.getResource("../views/NuevoPersonal.fxml"));
+
+			AnchorPane rootLayout = (AnchorPane)loader.load();
+
+			NuevoPersonalController nuevoPersonalController= loader.getController();
+			nuevoPersonalController.setAplicacion(this);
 
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
