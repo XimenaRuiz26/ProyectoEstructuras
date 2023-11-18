@@ -1,13 +1,13 @@
 package model;
 
-import structures.ListaSimple;
+import structures.Lista;
 
 public class Proceso {
 	private int id; 
 	private String nombre; 
-	private ListaSimple<Actividad> actividades;
+	private Lista<Actividad> actividades;
 	
-	public Proceso(int id, String nombre, ListaSimple<Actividad> actividades) {
+	public Proceso(int id, String nombre, Lista<Actividad> actividades) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -34,11 +34,11 @@ public class Proceso {
 		this.nombre = nombre;
 	}
 
-	public ListaSimple<Actividad> getActividades() {
+	public Lista<Actividad> getActividades() {
 		return actividades;
 	}
 
-	public void setActividades(ListaSimple<Actividad> actividades) {
+	public void setActividades(Lista<Actividad> actividades) {
 		this.actividades = actividades;
 	}
 	

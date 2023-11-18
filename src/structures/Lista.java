@@ -3,13 +3,13 @@ package structures;
 import java.util.Iterator;
 
 
-public class ListaSimple <T> implements Iterable<T> {
+public class Lista <T> implements Iterable<T> {
 
 	private Nodo<T> nodoPrimero;
 	private Nodo<T> nodoUltimo;
 	private int tamanio;
 
-	public ListaSimple() {
+	public Lista() {
 		nodoPrimero = null;
 		nodoPrimero = null;
 		tamanio = 0;
