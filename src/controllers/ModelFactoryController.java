@@ -74,21 +74,15 @@ public class ModelFactoryController {
     
     private void inicializarDatos() {
     	
-    	restaurante= new Restaurante("El Solar", "Calarcá");
+    	restaurante= new Restaurante("Sr. Don Platano", "Calarcá");
     	
     	Admin admin= new Admin();
     	admin.setNombre("Pepe");
-<<<<<<< HEAD
     	admin.setId("105465465");
     	admin.setUsuario("pepito12");
     	admin.setContrasenia("12345");
-=======
-    	admin.setId("23");
->>>>>>> dfdfe4dac1a28fe858acf4f4cdd37f124fb2e25a
-		
 
-
-	}
+    }
 	
 	public Restaurante getRed() {
 		return restaurante;
