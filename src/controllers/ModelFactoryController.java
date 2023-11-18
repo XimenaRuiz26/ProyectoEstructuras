@@ -78,7 +78,9 @@ public class ModelFactoryController {
     	
     	Admin admin= new Admin();
     	admin.setNombre("Pepe");
-    	admin.setId(id);
+    	admin.setId("105465465");
+    	admin.setUsuario("pepito12");
+    	admin.setContrasenia("12345");
 		
 
 
