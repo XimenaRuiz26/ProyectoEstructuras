@@ -82,11 +82,7 @@ public class ModelFactoryController {
     	admin.setUsuario("pepito12");
     	admin.setContrasenia("12345");
 
-<<<<<<< Updated upstream
     }
-=======
-    }
->>>>>>> Stashed changes
 	
 	public Restaurante getRed() {
 		return restaurante;
