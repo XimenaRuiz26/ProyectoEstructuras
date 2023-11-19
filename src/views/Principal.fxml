@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -140,7 +142,81 @@
           </Tab>
             <Tab style="-fx-background-color: #ffffff; -fx-font-family: &quot;Tw Cen MT&quot;;" text="Actividades">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text fill="#196f3d" layoutX="49.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione el proceso al cual desea crearle la actividad:">
+                           <font>
+                              <Font name="Tw Cen MT" size="25.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="88.0" fitWidth="428.0" layoutX="331.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/acti.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="40.0" fitWidth="37.0" layoutX="661.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/lista-de-quehaceres.png" />
+                           </image>
+                        </ImageView>
+                        <ComboBox fx:id="comboBoxProcesos" layoutX="371.0" layoutY="126.0" prefHeight="13.0" prefWidth="221.0" promptText="Procesos" style="-fx-background-radius: 30 30 30 30; -fx-background-color: f5f2ee; -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0); -fx-text-fill: #999999;" />
+                        <Text fill="#196f3d" layoutX="49.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione la actividad que la procedera:">
+                           <font>
+                              <Font name="Tw Cen MT" size="25.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="comboBoxActividades" layoutX="371.0" layoutY="210.0" prefHeight="13.0" prefWidth="221.0" promptText="Actividades" style="-fx-background-radius: 30 30 30 30; -fx-background-color: f5f2ee; -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0); -fx-text-fill: #999999;" />
+                        <TableView layoutX="730.0" layoutY="44.0" prefHeight="226.0" prefWidth="199.0">
+                           <columns>
+                              <TableColumn prefWidth="199.0" style="-fx-font-family: &quot;Tw Cen MT&quot;;" text="ACTIVIDADES" />
+                           </columns>
+                        </TableView>
+                        <Text fill="#196f3d" layoutX="25.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre de la actividad:">
+                           <font>
+                              <Font name="Tw Cen MT" size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="recepcionProcesos1" layoutX="371.0" layoutY="298.0" prefHeight="31.0" prefWidth="281.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);" text="Comunicación con el chef">
+                           <font>
+                              <Font name="Tw Cen MT" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fill="#196f3d" layoutX="32.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la descripción de la actividad:">
+                           <font>
+                              <Font name="Tw Cen MT" size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="recepcionProcesos11" layoutX="417.0" layoutY="355.0" prefHeight="33.0" prefWidth="403.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);" text="Area encargada">
+                           <font>
+                              <Font name="Tw Cen MT" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fill="#196f3d" layoutX="32.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Actividad obligatoria?">
+                           <font>
+                              <Font name="Tw Cen MT" size="24.0" />
+                           </font>
+                        </Text>
+                        <RadioButton layoutX="276.0" layoutY="421.0" mnemonicParsing="false" text="Si">
+                           <font>
+                              <Font name="Tw Cen MT" size="23.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton layoutX="342.0" layoutY="421.0" mnemonicParsing="false" text="No">
+                           <font>
+                              <Font name="Tw Cen MT" size="23.0" />
+                           </font>
+                        </RadioButton>
+                        <Button fx:id="btnCrearProceso1" layoutX="430.0" layoutY="457.0" mnemonicParsing="false" onAction="#crearProcesoEvent" prefHeight="38.0" prefWidth="166.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="Crear actividad" textFill="WHITE">
+                           <font>
+                              <Font name="Tw Cen MT Condensed Extra Bold" size="21.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="26.0" fitWidth="33.0" layoutX="570.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/grifo.png" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
                </content>
             </Tab>
             <Tab style="-fx-background-color: #ffffff; -fx-font-family: &quot;Tw Cen MT&quot;;" text="Tareas">
