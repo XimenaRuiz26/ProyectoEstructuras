@@ -77,10 +77,50 @@ public class Proceso {
 		if(verificarActividad(nombreA)== true){
 			return false;
 		}else{
-			
+			insertarAntesDe(preceder, actividad);
+			imprimirLista();
 			return true;
 		}
 	}
+	public void imprimirLista() {
+
+		Nodo<Actividad> aux = actividades.getNodoPrimero();
+
+		while (aux != null) {
+			System.out.print(aux.getValorNodo().getNombre() + "\t");
+			aux = aux.getSiguienteNodo();
+		}
+
+		System.out.println();
+	}
+	public void insertarAntesDe(String actividadExistente, Actividad nuevaActividad) {
+		Nodo<Actividad> cabeza = actividades.getNodoPrimero();
+		Nodo<Actividad> nuevo = new Nodo<Actividad>(nuevaActividad);
+	    if (cabeza == null) {
+	        cabeza = nuevo;
+	    } else if (cabeza.getValorNodo().getNombre().equals(actividadExistente)) {
+	        nuevo.setSiguienteNodo(cabeza);
+	        cabeza = nuevo;
+	    } else {
+	        Nodo<Actividad> previo = null;
+	        Nodo<Actividad> actual = cabeza;
+
+	        while (actual != null && !actual.getValorNodo().getNombre().equals(actividadExistente)) {
+	            previo = actual;
+	            actual = actual.getSiguienteNodo();
+	        }
+
+	        if (actual != null) {
+	            nuevo.setSiguienteNodo(actual);
+	            previo.setSiguienteNodo(nuevo);
+	        } else {
+	            // Manejo si no se encuentra la actividad existente
+	            System.out.println("La actividad " + actividadExistente + " no existe en la lista.");
+	        }
+	    }
+	}
+	
+	
 
 	private boolean verificarActividad(String nombreA) {
 		Iterator<Actividad> iterator = actividades.iterator();

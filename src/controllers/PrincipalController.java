@@ -20,6 +20,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import model.Actividad;
 import model.Proceso;
@@ -181,6 +182,7 @@ public class PrincipalController {
     
     @FXML
     void crearActividadEvent(ActionEvent event) {
+    	crearActividadAction();
     }
     
     private void crearActividadAction(){
@@ -239,6 +241,10 @@ public class PrincipalController {
 	}
     
     //----------------------------------
+	
+	//-------TAB BUSQUEDA-----------------
+	
+	
 
 
 	public void setAplicacion(Aplicacion aplicacion, String usuarioAdmin) {
@@ -286,7 +292,84 @@ public class PrincipalController {
 		alert.setContentText(contenido);
 		alert.showAndWait();
 	}
+	 @FXML
+	    private TextField recepcionProcesos12;
 
+	    @FXML
+	    private TextField recepcionProcesos121;
+
+	    @FXML
+	    private Button btnIntercambiar;
+
+	    @FXML
+	    private Label labelDescripcion1;
+
+	    @FXML
+	    private Label labelDuracionMi1;
+
+	    @FXML
+	    private Label labelDuracionMa1;
+
+	    @FXML
+	    private Label labelDescripcion11;
+
+	    @FXML
+	    private Label labelDuracionMi11;
+
+	    @FXML
+	    private Label labelDuracionMa11;
+
+	    @FXML
+	    private TextField txtBuscarActividades;
+
+	    @FXML
+	    private Label labelDescripcion12;
+
+	    @FXML
+	    private Label labelDuracionMi12;
+
+	    @FXML
+	    private Label labelDuracionMa12;
+
+	    @FXML
+	    private Label labelObligatoria;
+
+	    @FXML
+	    private Label labelProceso;
+
+	    @FXML
+	    private TableView<?> tableTareas;
+
+	    @FXML
+	    private TableColumn<?, ?> columnTareas;
+
+	    @FXML
+	    private Label labelDescripcion121;
+
+	    @FXML
+	    private Label labelDuracionMi121;
+
+	    @FXML
+	    private Label labelDuracionMa121;
+
+	    @FXML
+	    private Label labelObligatoria1;
+
+	    @FXML
+	    private Label labelProceso1;
+
+
+	    @FXML
+	    void buscarEvent(KeyEvent event) {
+
+	    }
+
+	  
+
+	    @FXML
+	    void intercambiarEvent(ActionEvent event) {
+
+	    }
 	
 	
 
