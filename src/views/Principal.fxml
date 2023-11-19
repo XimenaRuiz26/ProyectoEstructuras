@@ -20,7 +20,7 @@
             <Image url="@../imagenes/8764.jpg" />
          </image>
       </ImageView>
-      <TabPane layoutX="42.0" layoutY="140.0" prefHeight="579.0" prefWidth="953.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="42.0" layoutY="140.0" prefHeight="613.0" prefWidth="963.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab style="-fx-background-color: #ffffff; -fx-font-family: &quot;Tw Cen MT&quot;;" text="Procesos">
             <content>
@@ -100,17 +100,37 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <Label layoutX="412.0" layoutY="372.0" prefHeight="27.0" prefWidth="306.0" text="Realizacion de pedido">
+                        <Label fx:id="labelDescripcion" layoutX="412.0" layoutY="372.0" prefHeight="27.0" prefWidth="306.0" text="Realizacion de pedido">
                            <font>
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>
                         </Label>
-                        <Label layoutX="355.0" layoutY="411.0" prefHeight="27.0" prefWidth="306.0" text="98098">
+                        <Label fx:id="labelIdP" layoutX="355.0" layoutY="411.0" prefHeight="27.0" prefWidth="306.0" text="98098">
                            <font>
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>
                         </Label>
-                        <Label layoutX="450.0" layoutY="451.0" prefHeight="27.0" prefWidth="489.0" text="Realizar pedido">
+                        <Label fx:id="labelDescripcion" layoutX="450.0" layoutY="451.0" prefHeight="27.0" prefWidth="489.0" text="Realizar pedido">
+                           <font>
+                              <Font name="Tw Cen MT" size="21.0" />
+                           </font>
+                        </Label>
+                        <Text fill="#196f3d" layoutX="324.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duración minima:">
+                           <font>
+                              <Font name="Tw Cen MT" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#196f3d" layoutX="324.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duración máxima:">
+                           <font>
+                              <Font name="Tw Cen MT" size="24.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="labelDuracionMi" layoutX="496.0" layoutY="494.0" prefHeight="27.0" prefWidth="306.0" text="30 minutos">
+                           <font>
+                              <Font name="Tw Cen MT" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDuracionMa" layoutX="504.0" layoutY="533.0" prefHeight="27.0" prefWidth="306.0" text="2 horas">
                            <font>
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>

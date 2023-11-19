@@ -20,7 +20,7 @@
             <Image url="@../imagenes/8764.jpg" />
          </image>
       </ImageView>
-      <TabPane layoutX="42.0" layoutY="140.0" prefHeight="579.0" prefWidth="953.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="42.0" layoutY="140.0" prefHeight="613.0" prefWidth="963.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab style="-fx-background-color: #ffffff; -fx-font-family: &quot;Tw Cen MT&quot;;" text="Procesos">
             <content>
@@ -41,7 +41,7 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="349.0" layoutY="88.0" prefHeight="31.0" prefWidth="281.0" style="-fx-background-color: transparent;" text="Recepción de pedidos">
+                        <TextField fx:id="recepcionProcesos" layoutX="349.0" layoutY="88.0" prefHeight="31.0" prefWidth="281.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);" text="Recepción de pedidos">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
@@ -51,17 +51,17 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="318.0" layoutY="134.0" prefHeight="31.0" prefWidth="281.0" style="-fx-background-color: transparent;" text="89790">
+                        <TextField fx:id="idProcesos" layoutX="306.0" layoutY="142.0" prefHeight="5.0" prefWidth="281.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);" text="89790">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </TextField>
-                        <Text fill="#196f3d" layoutX="45.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la descripción del proceso:">
+                        <Text fill="#196f3d" layoutX="45.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la descripción del proceso:">
                            <font>
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="descripcionProcesos" layoutX="384.0" layoutY="177.0" prefHeight="43.0" prefWidth="544.0" style="-fx-background-color: transparent;" text="Area encargada">
+                        <TextField fx:id="descripcionProcesos" layoutX="385.0" layoutY="198.0" prefHeight="43.0" prefWidth="544.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);" text="Area encargada">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
@@ -71,41 +71,66 @@
                             <TableColumn prefWidth="199.0" style="-fx-font-family: &quot;Tw Cen MT&quot;;" text="PROCESOS" />
                           </columns>
                         </TableView>
-                        <Text layoutX="320.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información del proceso">
+                        <Text layoutX="321.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información del proceso">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="25.0" />
                            </font></Text>
-                        <Button fx:id="btnEntrar" layoutX="433.0" layoutY="244.0" mnemonicParsing="false" onAction="#entrarEvent" prefHeight="38.0" prefWidth="141.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="Crear proceso" textFill="WHITE">
+                        <Button fx:id="btnCrearProceso" layoutX="434.0" layoutY="263.0" mnemonicParsing="false" onAction="#crearProcesoEvent" prefHeight="38.0" prefWidth="141.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="Crear proceso" textFill="WHITE">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="21.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="26.0" fitWidth="33.0" layoutX="554.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="26.0" fitWidth="33.0" layoutX="548.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/grifo.png" />
                            </image>
                         </ImageView>
-                        <Text fill="#196f3d" layoutX="318.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
+                        <Text fill="#196f3d" layoutX="322.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
                            <font>
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <Text fill="#196f3d" layoutX="318.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id:">
+                        <Text fill="#196f3d" layoutX="322.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id:">
                            <font>
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <Text fill="#196f3d" layoutX="319.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción:">
+                        <Text fill="#196f3d" layoutX="323.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción:">
                            <font>
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <Label layoutX="408.0" layoutY="356.0" prefHeight="27.0" prefWidth="306.0" text="Realizacion de pedido">
+                        <Label fx:id="labelDescripcion" layoutX="412.0" layoutY="372.0" prefHeight="27.0" prefWidth="306.0" text="Realizacion de pedido">
                            <font>
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>
                         </Label>
-                        <Label layoutX="351.0" layoutY="395.0" prefHeight="27.0" prefWidth="306.0" text="Realizacion de pedido">
+                        <Label fx:id="labelIdP" layoutX="355.0" layoutY="411.0" prefHeight="27.0" prefWidth="306.0" text="98098">
+                           <font>
+                              <Font name="Tw Cen MT" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDescripcion" layoutX="450.0" layoutY="451.0" prefHeight="27.0" prefWidth="489.0" text="Realizar pedido">
+                           <font>
+                              <Font name="Tw Cen MT" size="21.0" />
+                           </font>
+                        </Label>
+                        <Text fill="#196f3d" layoutX="324.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duración minima:">
+                           <font>
+                              <Font name="Tw Cen MT" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#196f3d" layoutX="324.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duración máxima:">
+                           <font>
+                              <Font name="Tw Cen MT" size="24.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="labelDuracionMi" layoutX="496.0" layoutY="494.0" prefHeight="27.0" prefWidth="306.0" text="30 minutos">
+                           <font>
+                              <Font name="Tw Cen MT" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDuracionMa" layoutX="504.0" layoutY="533.0" prefHeight="27.0" prefWidth="306.0" text="2 horas">
                            <font>
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>
