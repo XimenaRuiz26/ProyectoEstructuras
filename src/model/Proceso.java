@@ -3,26 +3,29 @@ package model;
 import structures.Lista;
 
 public class Proceso {
-	private int id; 
+	private String id; 
 	private String nombre; 
+	private String descripcion; 
 	private Lista<Actividad> actividades;
 	
-	public Proceso(int id, String nombre, Lista<Actividad> actividades) {
+	public Proceso(String id, String nombre, Lista<Actividad> actividades, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.actividades = actividades;
+		this.descripcion = descripcion;
+		
 	}
 	
 	public Proceso(){
 		super();
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -41,6 +44,16 @@ public class Proceso {
 	public void setActividades(Lista<Actividad> actividades) {
 		this.actividades = actividades;
 	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	
 	
 	
 	

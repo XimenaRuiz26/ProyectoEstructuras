@@ -1,13 +1,13 @@
 package controllers;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
-import exceptions.PersonalException;
 import model.Admin;
 import model.Cargo;
 import model.Personal;
+import model.Proceso;
 import model.Restaurante;
+import structures.Lista;
 public class ModelFactoryController {
 	Restaurante restaurante;
 	
@@ -101,8 +101,20 @@ public class ModelFactoryController {
     	personal.setContrasenia("0000");
     	personal.setCargo(Cargo.CAMARERO);
     	
+    	Lista <Proceso> listaProcesos = new Lista<Proceso>();
+    	
+    	Proceso proceso = new Proceso();
+    	proceso.setNombre("Gestion pedidos");
+    	proceso.setId("1111");
+    	proceso.setDescripcion("gestionar los pedidos");
+    	
+    	listaProcesos.agregarInicio(proceso);
+    	
     	listaPersonal.add(personal);
     	restaurante.setAdmin(admin);
+    	restaurante.setListaProcesos(listaProcesos);
+    	
+    	
 
     }
 	
@@ -129,6 +141,14 @@ public class ModelFactoryController {
 	
 	public String traerNombre(String correo){
 		return restaurante.traerNombre(correo);
+	}
+
+	public boolean crearProceso(String nombreP, String idP, String descripcionP) {
+		return restaurante.crearProceso(nombreP, idP, descripcionP);
+	}
+
+	public ArrayList<Proceso> obtenerProcesos() {
+		return restaurante.obtenerProcesos();
 	}
 
 }

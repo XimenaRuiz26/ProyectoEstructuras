@@ -1,10 +1,10 @@
 package model;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-
-import exceptions.PersonalException;
 import structures.Lista;
+import structures.Nodo;
 
 public class Restaurante {
 	
@@ -97,12 +97,23 @@ public class Restaurante {
 		personal.setUsuario(usuario);
 		personal.setCargo(verificarCargo(cargo));
 
-		if(listaPersonal.add(personal) == false){
+		if(verificarPersonal(email)== true){
 			return false;
 		}else{
 			listaPersonal.add(personal);
 			return true;
 		}
+	}
+	
+	public boolean verificarPersonal(String email) {
+		Iterator<Personal> iterator = listaPersonal.iterator();
+        while (iterator.hasNext()) {
+            Personal aux = iterator.next();
+            if (aux.getEmail().equals(email)) {
+                return true;
+            }
+        }
+		return false;
 	}
 
 	private Cargo verificarCargo(String cargo) {
@@ -128,5 +139,46 @@ public class Restaurante {
             }
         }
 		return nombre;
+	}
+
+	public boolean crearProceso(String nombreP, String idP, String descripcionP) {
+		Proceso proceso = new Proceso();
+		proceso.setNombre(nombreP);
+		proceso.setId(idP);
+		proceso.setDescripcion(descripcionP);
+		
+		if(verificarProceso(idP)== true){
+			return false;
+		}else{
+			listaProcesos.agregarInicio(proceso);
+			return true;
+		}
+	}
+
+	private boolean verificarProceso(String idP) {
+	    Nodo<Proceso> actual = listaProcesos.getNodoPrimero();
+	    while (actual != null) {
+	        Proceso proceso = actual.getValorNodo(); 
+	        String id = proceso.getId();
+
+	        if (id.equals(idP)) {
+	            return true;
+	        }
+	        actual = actual.getSiguienteNodo();
+	    }
+	    return false;
+	}
+
+	public ArrayList<Proceso> obtenerProcesos() {
+		ArrayList<Proceso> listaProcesos2 = new ArrayList <Proceso>();
+		Nodo<Proceso> actual = listaProcesos.getNodoPrimero();
+
+		while (actual != null) {
+			Proceso proceso = (Proceso) actual.getValorNodo();
+			listaProcesos2.add(proceso);
+			actual = actual.getSiguienteNodo();
+		}
+
+		return listaProcesos2;
 	}
 }
