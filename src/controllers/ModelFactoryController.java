@@ -1,8 +1,11 @@
 package controllers;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+import exceptions.PersonalException;
 import model.Admin;
+import model.Cargo;
 import model.Personal;
 import model.Restaurante;
 public class ModelFactoryController {
@@ -96,6 +99,7 @@ public class ModelFactoryController {
     	personal.setEmail("eddg@gmail.com");
     	personal.setUsuario("eddg");
     	personal.setContrasenia("0000");
+    	personal.setCargo(Cargo.CAMARERO);
     	
     	listaPersonal.add(personal);
     	restaurante.setAdmin(admin);
@@ -116,6 +120,15 @@ public class ModelFactoryController {
 
 	public boolean verificarPersonal(String usuario, String contrasenia) {
 		return restaurante.verificarPersonal(usuario, contrasenia);
+	}
+
+	public boolean crearPersonal(String nombre, String apellido, String documento, String direccion,
+			String contrasenia, String email, String usuario, String cargo)  {
+		return restaurante.crearPersonal(nombre, apellido, documento, direccion, contrasenia, email, usuario, cargo);
+	}
+	
+	public String traerNombre(String correo){
+		return restaurante.traerNombre(correo);
 	}
 
 }

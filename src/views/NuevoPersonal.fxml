@@ -78,12 +78,12 @@
          </font>
       </Text>
       <ComboBox fx:id="comboBoxCargos" layoutX="69.0" layoutY="495.0" prefHeight="39.0" prefWidth="205.0" promptText="..." style="-fx-background-radius: 30 30 30 30; -fx-background-color: f5f2ee; -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0); -fx-text-fill: #999999;" />
-      <Button fx:id="btnRegistrarse" layoutX="472.0" layoutY="684.0" mnemonicParsing="false" onAction="#RegistrarseEvent" prefHeight="38.0" prefWidth="131.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="Registrarse" textFill="WHITE">
+      <Button fx:id="btnRegistrarse" layoutX="462.0" layoutY="483.0" mnemonicParsing="false" onAction="#RegistrarseEvent" prefHeight="38.0" prefWidth="131.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="Registrarse" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="21.0" />
          </font>
       </Button>
-      <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="581.0" layoutY="703.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="563.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/grifo.png" />
          </image>

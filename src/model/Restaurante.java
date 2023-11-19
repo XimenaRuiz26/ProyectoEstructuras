@@ -3,6 +3,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import exceptions.PersonalException;
 import structures.Lista;
 
 public class Restaurante {
@@ -83,11 +84,49 @@ public class Restaurante {
         }
 		return false;
 	}
-	
-	
-	
-	
-	
-	
 
+	public Boolean crearPersonal(String nombre2, String apellido, String documento, String direccion2,
+			String contrasenia, String email, String usuario, String cargo) {
+		Personal personal = new Personal();
+		personal.setNombre(nombre2);
+		personal.setApellido(apellido);
+		personal.setId(documento);
+		personal.setDireccion(direccion);
+		personal.setContrasenia(contrasenia);
+		personal.setEmail(email);
+		personal.setUsuario(usuario);
+		personal.setCargo(verificarCargo(cargo));
+
+		if(listaPersonal.add(personal) == false){
+			return false;
+		}else{
+			listaPersonal.add(personal);
+			return true;
+		}
+	}
+
+	private Cargo verificarCargo(String cargo) {
+		if(cargo.equals("CAMARERO")){
+			return Cargo.CAMARERO;
+		}
+		else if(cargo.equals("COCINERO")){
+			return Cargo.COCINERO;
+		}
+		else if(cargo.equals("CAJERO")){
+			return Cargo.CAJERO;
+		}
+		return null;
+	}
+
+	public String traerNombre(String correo) {
+		String nombre= "";
+		Iterator<Personal> iterator = listaPersonal.iterator();
+        while (iterator.hasNext()) {
+            Personal aux = iterator.next();
+            if (aux.getEmail().equals(correo)) {
+                nombre= aux.getNombre();
+            }
+        }
+		return nombre;
+	}
 }

@@ -8,10 +8,10 @@ public class Personal {
 	private String email;
 	private String usuario; 
 	private String contrasenia; 
-	private String cargo;
+	private Cargo cargo;
 	
 	public Personal(String nombre, String apellido, String id, String direccion, String email, String usuario,
-			String contrasenia, String cargo) {
+			String contrasenia, Cargo cargo) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -83,11 +83,11 @@ public class Personal {
 		this.contrasenia = contrasenia;
 	}
 
-	public String getCargo() {
+	public Cargo getCargo() {
 		return cargo;
 	}
 
-	public void setCargo(String cargo) {
+	public void setCargo(Cargo cargo) {
 		this.cargo = cargo;
 	}
 	
