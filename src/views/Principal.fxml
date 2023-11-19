@@ -430,7 +430,11 @@
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>
                         </Label>
+<<<<<<< Updated upstream
                         <TableView fx:id="tableTareas" layoutX="383.0" layoutY="190.0" prefHeight="289.0" prefWidth="200.0">
+=======
+                        <TableView layoutX="383.0" layoutY="190.0" prefHeight="342.0" prefWidth="200.0">
+>>>>>>> Stashed changes
                           <columns>
                             <TableColumn fx:id="columnTareas" prefWidth="199.0" style="-fx-font-family: &quot;Tw Cen MT&quot; &quot;Tw Cen MT&quot;;" text="LISTA TAREAS" />
                           </columns>
