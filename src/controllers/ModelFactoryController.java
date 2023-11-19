@@ -2,6 +2,8 @@ package controllers;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import model.Actividad;
 import model.Admin;
 import model.Cargo;
 import model.Personal;
@@ -108,6 +110,23 @@ public class ModelFactoryController {
     	proceso.setId("1111");
     	proceso.setDescripcion("gestionar los pedidos");
     	
+    	Lista <Actividad> listaActividades = new Lista<Actividad>();
+    	
+    	Actividad actividad = new Actividad();
+    	actividad.setNombre("Entrega al cliente");
+    	actividad.setDescripcion("Entregar al cliente el pedido");
+    	actividad.setObligatoria(true);
+    	
+    	Actividad actividad2 = new Actividad();
+    	actividad2.setNombre("Tiempo de preparacion");
+    	actividad2.setDescripcion("Verificar el tiempo de preparación del pedido");
+    	actividad2.setObligatoria(true);
+    	
+    	listaActividades.agregarInicio(actividad);
+    	listaActividades.agregarInicio(actividad2);
+    	
+    	proceso.setActividades(listaActividades);
+    	
     	listaProcesos.agregarInicio(proceso);
     	
     	listaPersonal.add(personal);
@@ -149,6 +168,19 @@ public class ModelFactoryController {
 
 	public ArrayList<Proceso> obtenerProcesos() {
 		return restaurante.obtenerProcesos();
+	}
+
+	public ArrayList<String> obtenerProcesosA() {
+		return restaurante.obtenerProcesosA();
+	}
+
+	public ArrayList<String> obtenerActividadesCB(String proceso) {
+		return restaurante.obtenerActividadesCB(proceso);
+	}
+
+	public boolean crearActividad(String nombreA, String descripcion, String proceso, String preceder,
+			String seleccion) {
+		return restaurante.crearActividad(nombreA, descripcion, proceso, preceder, seleccion);
 	}
 
 }

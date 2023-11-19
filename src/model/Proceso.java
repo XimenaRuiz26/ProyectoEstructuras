@@ -1,6 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import structures.Lista;
+import structures.Nodo;
 
 public class Proceso {
 	private String id; 
@@ -52,11 +56,50 @@ public class Proceso {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
-	
-	
-	
-	
 
+	public ArrayList<String> obtenerActividades() {
+		ArrayList<String> listaActividades = new ArrayList <String>();
+		Nodo<Actividad> actual = actividades.getNodoPrimero();
+		while (actual != null) {
+			Actividad actividad = (Actividad) actual.getValorNodo();
+			listaActividades.add(actividad.getNombre());
+			actual = actual.getSiguienteNodo();
+		}
+		return listaActividades;
+	}
+
+	public boolean crearActividad(String nombreA, String descripcion2, String preceder, String seleccion) {
+		Actividad actividad = new Actividad();
+		actividad.setNombre(nombreA);
+		actividad.setDescripcion(descripcion2);
+		actividad.setObligatoria(verificarObligatoria(seleccion));
+		
+		if(verificarActividad(nombreA)== true){
+			return false;
+		}else{
+			
+			return true;
+		}
+	}
+
+	private boolean verificarActividad(String nombreA) {
+		Iterator<Actividad> iterator = actividades.iterator();
+        while (iterator.hasNext()) {
+            Actividad aux = iterator.next();
+            if (aux.getNombre().equals(nombreA)) {
+                return true;
+            }
+        }
+		return false;
+	}
+
+	private boolean verificarObligatoria(String seleccion) {
+		if(seleccion.equals("Si")){
+			return true;
+		}
+		else if(seleccion.equals("No")){
+			return false;
+		}
+		return false;
+	}
 }

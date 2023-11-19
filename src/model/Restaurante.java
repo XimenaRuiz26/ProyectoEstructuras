@@ -181,4 +181,45 @@ public class Restaurante {
 
 		return listaProcesos2;
 	}
+
+	public ArrayList<String> obtenerProcesosA() {
+		ArrayList<String> listaProcesos2 = new ArrayList <String>();
+		Nodo<Proceso> actual = listaProcesos.getNodoPrimero();
+
+		while (actual != null) {
+			Proceso proceso = (Proceso) actual.getValorNodo();
+			listaProcesos2.add(proceso.getNombre());
+			actual = actual.getSiguienteNodo();
+		}
+
+		return listaProcesos2;
+	}
+
+	public ArrayList<String> obtenerActividadesCB(String proceso2) {
+		Nodo<Proceso> actual = listaProcesos.getNodoPrimero();
+
+		while (actual != null) {
+			Proceso proceso = (Proceso) actual.getValorNodo();
+			if(proceso.getNombre().equals(proceso2)){
+				return proceso.obtenerActividades();
+			}
+			actual = actual.getSiguienteNodo();
+		}
+
+		return null;
+	}
+
+	public boolean crearActividad(String nombreA, String descripcion, String proceso2, String preceder, String seleccion) {
+		Nodo<Proceso> actual = listaProcesos.getNodoPrimero();
+
+		while (actual != null) {
+			Proceso proceso = (Proceso) actual.getValorNodo();
+			if(proceso.getNombre().equals(proceso2)){
+				return proceso.crearActividad(nombreA, descripcion, preceder, seleccion);
+			}
+			actual = actual.getSiguienteNodo();
+		}
+
+		return false;
+	}
 }

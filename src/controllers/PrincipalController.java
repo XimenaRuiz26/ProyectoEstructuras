@@ -1,20 +1,27 @@
 package controllers;
 
+import java.util.ArrayList;
+
 import aplication.Aplicacion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import model.Actividad;
 import model.Proceso;
 
 public class PrincipalController {
@@ -121,18 +128,135 @@ public class PrincipalController {
 
     
     //-----------------------------
+    
+    //--------------TAB ACTIVIDADES--------------------------
+    
+    @FXML
+    private ComboBox<String> comboBoxProcesosA;
+
+    @FXML
+    private ComboBox<String> comboBoxActividades;
+
+    @FXML
+    private TableView<String> tableActividades;
+
+    @FXML
+    private TableColumn<Actividad, String> columnActividad;
+
+    @FXML
+    private TextField txtNombreA;
+
+    @FXML
+    private TextField txtDescripcionA;
+
+    @FXML
+    private RadioButton rBtnSi;
+
+    @FXML
+    private RadioButton rBtnNo;
+
+    @FXML
+    private Button btnCrearActividad;
+    
+    ObservableList<String> listaProcesosAData = FXCollections.observableArrayList();
+    
+    private ToggleGroup grupoOpciones = new ToggleGroup();
+
+    private ObservableList<String> getListaProcesosAData(){
+		listaProcesosAData.addAll(modelFactoryController.obtenerProcesosA());
+		return listaProcesosAData;
+	}
+    
+
+    private ObservableList<String> getListaActividadesCBData(String proceso){
+    	ObservableList<String> listActividadesCBData = FXCollections.observableArrayList();
+    	 ArrayList<String> actividades = modelFactoryController.obtenerActividadesCB(proceso);
+    	    if (actividades != null) {
+    	        listActividadesCBData.addAll(actividades);
+    	    } else {
+    	        System.out.println("error");
+    	    }
+    	    return listActividadesCBData;
+	}
+    
+    @FXML
+    void crearActividadEvent(ActionEvent event) {
+    }
+    
+    private void crearActividadAction(){
+    	String nombreA = txtNombreA.getText();
+    	String descripcion = txtDescripcionA.getText();
+    	String proceso = comboBoxProcesosA.getSelectionModel().getSelectedItem();
+    	String preceder = comboBoxActividades.getSelectionModel().getSelectedItem();
+    	RadioButton radioButtonSeleccionado = (RadioButton) grupoOpciones.getSelectedToggle();
+		String seleccion = radioButtonSeleccionado.getText();
+    	
+    	
+    	if(datosValidosA(nombreA, descripcion, proceso, preceder)){
+    		if(modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion)){
+    			mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad", AlertType.INFORMATION);
+    			tableActividades.setItems(getListaActividadesCBData(proceso));
+                tableActividades.refresh();
+    			txtNombreA.setText("");
+    			txtDescripcionA.setText("");
+    			comboBoxProcesosA.setValue(null);
+    			comboBoxActividades.setValue(null);
+    			
+    		}else{
+    			mostrarMensaje("Notificacion creación", "Activiad no creada", "Ya existe una actividad con el nombre "+nombreA+" No se puede crear", AlertType.INFORMATION);
+    		}
+    	}else {
+			mostrarMensaje("Notificación creación", "Informacion invalida", "Informacion invalida", AlertType.ERROR);
+		}
+    }
+    
+    
+    
+	private void filtrarActividades(ActionEvent event) {
+		String proceso= comboBoxProcesosA.getSelectionModel().getSelectedItem();
+		getListaActividadesCBData(proceso);
+		comboBoxActividades.setItems(getListaActividadesCBData(proceso));
+	}
+	
+	private boolean datosValidosA(String nombre, String descripcion, String proceso,String preceder) {
+		if (nombre.equals("")) {
+			return false;
+		}
+		if (proceso.equals("")) {
+			return false;
+		}
+		if (descripcion.equals("")) {
+			return false;
+		}
+		if (preceder.equals("")) {
+			return false;
+		}
+		if (grupoOpciones.getSelectedToggle() == null) {
+			return false;
+		}
+		return true;
+
+	}
+    
+    //----------------------------------
 
 
 	public void setAplicacion(Aplicacion aplicacion, String usuarioAdmin) {
 		this.aplicacion = aplicacion;
 		this.usuarioAdmin = usuarioAdmin;
 		tableProcesos.getItems().clear();
+		tableActividades.getItems().clear();
 		//tableProcesos.setItems(getListaProcesosData());
+		
 	}
 	
 	@FXML
 	void initialize() {
 		modelFactoryController = ModelFactoryController.getInstance();
+		comboBoxProcesosA.setItems(getListaProcesosAData());
+		comboBoxProcesosA.setOnAction(this::filtrarActividades);
+		rBtnSi.setToggleGroup(grupoOpciones);
+		rBtnNo.setToggleGroup(grupoOpciones);
 		
 		this.columnProceso.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 		
@@ -142,8 +266,11 @@ public class PrincipalController {
 	   	
 	   		mostrarInformacionProceso(procesoSeleccionado);
 	   	});
+		
+		this.columnActividad.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 	}
 	
+
 	private void mostrarInformacionProceso(Proceso procesoSeleccionado2) {
 		labelNombreP.setText(procesoSeleccionado2.getNombre());
 		labelIdP.setText(procesoSeleccionado2.getId());
