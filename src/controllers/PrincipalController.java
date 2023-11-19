@@ -6,7 +6,6 @@ import aplication.Aplicacion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -100,13 +99,18 @@ public class PrincipalController {
     	if(datosValidosP(nombreP, idP, descripcionP)){
     		if(modelFactoryController.crearProceso(nombreP, idP, descripcionP)){
     			mostrarMensaje("Notificacion creación", "Proceso creado", "Se ha creado con exito el proceso", AlertType.INFORMATION);
-    			tableProcesos.setItems(getListaProcesosData());
+    			listaProcesosData.setAll(modelFactoryController.obtenerProcesos());
+    			listaProcesosAData.setAll(modelFactoryController.obtenerProcesosA());
                 tableProcesos.refresh();
     			txtNombreProceso.setText("");
     			txtIdProcesos.setText("");
     			txtDescripcionProcesos.setText("");
     		}else{
     			mostrarMensaje("Notificacion creación", "Proceso no creado", "Ya existe un proceso con el id "+idP+" No se puede crear", AlertType.INFORMATION);
+                tableProcesos.refresh();
+    			txtNombreProceso.setText("");
+    			txtIdProcesos.setText("");
+    			txtDescripcionProcesos.setText("");
     		}
     	}else {
 			mostrarMensaje("Notificación creación", "Informacion invalida", "Informacion invalida", AlertType.ERROR);
@@ -126,7 +130,6 @@ public class PrincipalController {
 		return true;
 
 	}
-
     
     //-----------------------------
     
@@ -168,9 +171,9 @@ public class PrincipalController {
 		return listaProcesosAData;
 	}
     
+    ObservableList<String> listActividadesCBData = FXCollections.observableArrayList();
 
     private ObservableList<String> getListaActividadesCBData(String proceso){
-    	ObservableList<String> listActividadesCBData = FXCollections.observableArrayList();
     	 ArrayList<String> actividades = modelFactoryController.obtenerActividadesCB(proceso);
     	    if (actividades != null) {
     	        listActividadesCBData.addAll(actividades);
@@ -194,19 +197,30 @@ public class PrincipalController {
 		String seleccion = radioButtonSeleccionado.getText();
     	
     	
-    	if(datosValidosA(nombreA, descripcion, proceso, preceder)){
-    		if(modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion)){
+    	if(datosValidosA(nombreA, descripcion, proceso,seleccion)){
+    		if(preceder== null){
+    			modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion);
     			mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad", AlertType.INFORMATION);
-    			tableActividades.setItems(getListaActividadesCBData(proceso));
-                tableActividades.refresh();
-    			txtNombreA.setText("");
-    			txtDescripcionA.setText("");
-    			comboBoxProcesosA.setValue(null);
-    			comboBoxActividades.setValue(null);
-    			
     		}else{
-    			mostrarMensaje("Notificacion creación", "Activiad no creada", "Ya existe una actividad con el nombre "+nombreA+" No se puede crear", AlertType.INFORMATION);
+    			if(modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion)){
+        			mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad", AlertType.INFORMATION);
+        			tableActividades.setItems(getListaActividadesCBData(proceso));
+                    tableActividades.refresh();
+        			txtNombreA.setText("");
+        			txtDescripcionA.setText("");
+        			comboBoxProcesosA.setValue(null);
+        			comboBoxActividades.setValue(null);
+        			
+        		}else{
+        			mostrarMensaje("Notificacion creación", "Actividad no creada", "Ya existe una actividad con el nombre "+nombreA+" No se puede crear", AlertType.INFORMATION);
+        			tableActividades.refresh();
+        			txtNombreA.setText("");
+        			txtDescripcionA.setText("");
+        			comboBoxProcesosA.setValue(null);
+        			comboBoxActividades.setValue(null);
+        		}
     		}
+    
     	}else {
 			mostrarMensaje("Notificación creación", "Informacion invalida", "Informacion invalida", AlertType.ERROR);
 		}
@@ -220,7 +234,7 @@ public class PrincipalController {
 		comboBoxActividades.setItems(getListaActividadesCBData(proceso));
 	}
 	
-	private boolean datosValidosA(String nombre, String descripcion, String proceso,String preceder) {
+	private boolean datosValidosA(String nombre, String descripcion, String proceso,String seleccion) {
 		if (nombre.equals("")) {
 			return false;
 		}
@@ -230,7 +244,7 @@ public class PrincipalController {
 		if (descripcion.equals("")) {
 			return false;
 		}
-		if (preceder.equals("")) {
+		if (seleccion.equals("")) {
 			return false;
 		}
 		if (grupoOpciones.getSelectedToggle() == null) {
@@ -251,14 +265,17 @@ public class PrincipalController {
 		this.aplicacion = aplicacion;
 		this.usuarioAdmin = usuarioAdmin;
 		tableProcesos.getItems().clear();
+		tableProcesos.setItems(getListaProcesosData());
+		//tableProcesos.refresh();
 		tableActividades.getItems().clear();
-		//tableProcesos.setItems(getListaProcesosData());
+//		tableProcesos.setItems(getListaProcesosData());
 		
 	}
 	
 	@FXML
 	void initialize() {
 		modelFactoryController = ModelFactoryController.getInstance();
+		tableProcesos.setItems(getListaProcesosData());
 		comboBoxProcesosA.setItems(getListaProcesosAData());
 		comboBoxProcesosA.setOnAction(this::filtrarActividades);
 		rBtnSi.setToggleGroup(grupoOpciones);
